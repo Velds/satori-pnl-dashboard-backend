@@ -1,3 +1,3 @@
 # To start the server
 
-## python server.py
+`python server.py`
