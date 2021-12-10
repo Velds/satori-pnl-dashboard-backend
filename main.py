@@ -44,15 +44,15 @@ print("-----------------------------------------------")
 trade_df = 0
 price_df = 0
 
-@app.on_event('startup')
-def init_data():
-    # pre-initialize trade_df and price_df as global variables for higher performance, make sure db is already pre-filled with data first
-    trade_df = pd.read_sql_table('trade', database_connection)
-    trade_df['trade_datetime'] = pd.to_datetime(trade_df['trade_datetime']).dt.tz_localize(None) # convert to datetime data type 
-    trade_df['trade_datetime_rounded_down_hour'] = trade_df['trade_datetime'].dt.floor('h') # round down to nearest hour
+# @app.on_event('startup')
+# def init_data():
+#     # pre-initialize trade_df and price_df as global variables for higher performance, make sure db is already pre-filled with data first
+#     trade_df = pd.read_sql_table('trade', database_connection)
+#     trade_df['trade_datetime'] = pd.to_datetime(trade_df['trade_datetime']).dt.tz_localize(None) # convert to datetime data type 
+#     trade_df['trade_datetime_rounded_down_hour'] = trade_df['trade_datetime'].dt.floor('h') # round down to nearest hour
 
-    price_df = pd.read_sql_table('price', database_connection)
-    price_df['price_datetime'] = pd.to_datetime(price_df['price_datetime']) # convert to datetime data type 
+#     price_df = pd.read_sql_table('price', database_connection)
+#     price_df['price_datetime'] = pd.to_datetime(price_df['price_datetime']) # convert to datetime data type 
 
 def upload_db_trade(file):
     # transform csv file to python dataframe
