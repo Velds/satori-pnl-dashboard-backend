@@ -28,13 +28,21 @@ app.add_middleware(
 
 pd.set_option("display.max_rows", None, "display.max_columns", None)
 
-# database connection handling
-database_username = 'kevinthosatria'
-database_password = 'kevinthosatria'
-database_ip       = 'satori-pnl-db.clkwznmucv7d.us-east-2.rds.amazonaws.com:3306'
-database_name     = 'satoridb'
-database_connection = create_engine('mysql+mysqlconnector://{0}:{1}@{2}/{3}'.format(database_username, database_password, database_ip, database_name))
+# # AWS RDS database connection handling
+# database_username = 'kevinthosatria'
+# database_password = 'kevinthosatria'
+# database_ip       = 'satori-pnl-db.clkwznmucv7d.us-east-2.rds.amazonaws.com:3306'
+# database_name     = 'satoridb'
+# database_connection = create_engine('mysql+mysqlconnector://{0}:{1}@{2}/{3}'.format(database_username, database_password, database_ip, database_name))
     
+# Heroku database connection handling
+database_username = 'b3e42ad0cd1c56'
+database_password = 'cf9e5802'
+database_ip       = 'us-cdbr-east-05.cleardb.net'
+database_name     = 'heroku_342aa3d35f902ab'
+database_connection = create_engine('mysql+mysqlconnector://{0}:{1}@{2}/{3}'.format(database_username, database_password, database_ip, database_name))
+
+
 rs = database_connection.execute('SHOW TABLES')
 for row in rs:
     print(row)
